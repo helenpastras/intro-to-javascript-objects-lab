@@ -152,7 +152,8 @@ const pokemon = [
   { number: 150, name: 'Mewtwo', type: 'psychic', hp: 106, starter: false },
   { number: 151, name: 'Mew', type: 'psychic', hp: 100, starter: false },
 
-
 ];
-export default pokemon;
+// module.exports = pokemon;
+
+
 
