@@ -131,6 +131,8 @@ game.catchPokemon = function() {
   console.log("Exercise 10: " , pokemonObj)
 };
 game.catchPokemon();
+console.log("Exercise 10: " , pokemonObj)
+//I tried the following thinking it would help catch the game.catchPokemon(game.party[2]);
 
 
 // Exercise 11
@@ -144,17 +146,32 @@ game.catchPokemon();
 
 // Solve Exercise 11 here:
 game.catchPokemon = function() {
-  pokemonObj = null;
-  game.party.pokemonObj;
-  console.log("Exercise 10: " , pokemonObj)
+    game.items.quantity--;
+
+    pokemonObj = null;
+    game.party.pokemonObj;
+    console.log("Exercise 11: " , game.items.quantity)
 };
 game.catchPokemon();
+
 
 // Exercise 12
 // 1. Similar to Exercise 6, now complete gyms with a difficulty below 6. How will you approach this?
 //  (change the value of `complete` in the qualifying objects from false to true).
 
 // Solve Exercise 12 here:
+for (let gym of game.gyms) {
+  if (gym.difficulty > 3 && gym.difficulty <= 6 ) {
+    gym.completed = true;
+    console.log('Exercise 12: The game is completed for: ' , gym)
+  }
+else {    
+    console.log('Exercise 12: The game goes on for: ' , gym);
+}
+};
+console.log(game.gyms);
+
+
 
 // Exercise 13
 // 1. Create a `gymStatus` method in `game` to tally completed and incomplete gyms.
