@@ -33,15 +33,14 @@ console.log(game);
 // Exercise 3
 // 1. Add a new property to the `game` object. Let's call it "difficulty".
 // 2. Choose a value for "difficulty" that you think fits the game. Ex: "Easy", "Med" or "Hard". How would you assign it?
-
-
 // Solve Exercise 3 here
 //   added above in the game: 
 //  difficulty: ['Easy', 'Intermediate', 'Hard', 'Pro-level'],
 console.log("Exercise 3" , game.difficulty);
 
 
-// Exercise 4: 
+
+
 // Exercise 4
 // 1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
 // 2. Add this Pokémon to the `game.party` array. Which array method will you use to add them?
@@ -54,6 +53,9 @@ for (let i = 0; i < pokemon.length; i++) {
         }
     };
     console.log("Exercise 4:" , game.party);
+
+
+
 
 // Exercise 5
 // 1. Choose three more Pokémon from the `pokemon` array and add them to your party.
@@ -68,7 +70,8 @@ console.log("Exercise 5:" , game.party);
 // 1. Set the `completed` property to true for gyms with a difficulty below 3.
 // 2. Think about how you'd loop through the `gyms` array to check and update the `completed` property. 
 
-// I know the theory of what I should do, but fail to see how to get to it the right way; having more time for these would really help tbh. 
+
+
 
 for (let gym of game.gyms) {
   if (gym.difficulty <= 3) {
@@ -80,6 +83,12 @@ else {
 }
 };
 console.log(game.gyms);
+// I know the theory of what I should do, but fail to see how to get to it the right way; having more time for these would really help tbh. 
+
+
+
+
+
 
 // Exercise 7
 // 1. Evolve the starter Pokémon you added to your party earlier. Each starter Pokémon evolves into a specific one.
@@ -88,7 +97,6 @@ console.log(game.gyms);
 //   - Pokemon 4: Charmander evolves into Pokemon 5: Charmeleon
 //   - Pokemon 7: Squirtle evolves into Pokemon 8: Wartortle
 //   - Pokemon 25: Pikachu evolves into Pokemon 26: Raichu
-
 // Solve Exercise 7 here:
 const evolvePok = [
     game.party[0]=pokemon[1],
@@ -98,12 +106,17 @@ const evolvePok = [
 ];
 console.log("Exercise 7: These Pokemon have evolved: " , evolvePok);
 
+
+
+
+
 // Exercise 8
 // 1. Print the name of each Pokémon in your party.
 // 2. Consider using a loop or an array method to access each Pokémon's name.
-
 // Solve Exercise 8 here:
 game.party.forEach((element) => console.log("Exercise 8: The party includes: " , element.name));
+
+
 
 // Exercise 9
 // 1. Can you print out all the starter Pokémon from the `pokemon` array?
@@ -116,14 +129,14 @@ for (let i = 0; i < pokemon.length; i++) {
 };
 
   
+
+
 // Exercise 10
 // Create a method called `catchPokemon` and add it to the `game` object. You should not need to edit the original game object directly. This method should:
 //   - Accept an object as a parameter called `pokemonObj`
 //   - Add the `pokemonObj` to the `game.party` array.
 //   - not return anything
-
 // After writing this method, call it and pass in a Pokemon object of your choice from the `pokemon` data to catch it.
-
 // Solve Exercise 10 here:
 game.catchPokemon = function() {
   pokemonObj = null;
@@ -133,6 +146,7 @@ game.catchPokemon = function() {
 game.catchPokemon();
 console.log("Exercise 10: " , pokemonObj)
 //I tried the following thinking it would help catch the game.catchPokemon(game.party[2]);
+
 
 
 // Exercise 11
@@ -155,10 +169,10 @@ game.catchPokemon = function() {
 game.catchPokemon();
 
 
+
 // Exercise 12
 // 1. Similar to Exercise 6, now complete gyms with a difficulty below 6. How will you approach this?
 //  (change the value of `complete` in the qualifying objects from false to true).
-
 // Solve Exercise 12 here:
 for (let gym of game.gyms) {
   if (gym.difficulty > 3 && gym.difficulty <= 6 ) {
@@ -195,15 +209,26 @@ console.log(game.gyms);
 // Solve Exercise 13 here:
 
 
+
+
+
+
 // Exercise 14
 // 1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
-
 // This method should:
 //   - Not accept any arguments.
 //   - Count the number of Pokemon in the party.
 //   - return the found number of Pokemon in the party.
-
 // Solve Exercise 14 here:
+
+game.partyCount = function (){
+  return game.party.length;
+};
+game.partyCount();
+console.log('Exercise 14: There are ' , game.partyCount , ' Pokemon in your party');
+// this doesn't work, but I feel like it should. What am I missing (apart from sleep)?
+
+
 
 
 // Exercise 15
@@ -211,10 +236,20 @@ console.log(game.gyms);
 // (change the value of `complete` in the qualifying objects from false to true).
 
 // Solve Exercise 15 here:
+for (let gym of game.gyms) {
+  if (gym.difficulty > 6 && gym.difficulty <= 8 ) {
+    gym.completed = true;
+    console.log('Exercise 15: The game is completed for: ' , gym)
+  }
+else {    
+    console.log('Exercise 15: The game goes on for: ' , gym);
+}
+};
+console.log(game.gyms);
+
 
 
 // Exercise 16
 // 1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
-
-
 // Solve Exercise 16 here:
+console.log("Exercise 16: The game: " , game);
