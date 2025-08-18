@@ -19,15 +19,15 @@ const game = {
   ],
   difficulty: ['Easy', 'Intermediate', 'Hard', 'Pro-level'],
 }
-console.log(game.gyms.difficulty);
+console.log("Exercise 1: Difficulty " ,game.difficulty);
 
 
 // // Exercise 2
 // console.dir(pokemon, { maxArrayLength: null })
-console.log(pokemon[58]);
+console.log("Exercise 2, the Pokemon: " ,pokemon[58]);
 
 // Exercise 2
-console.log(game);
+console.log("Exercise 2, the game: " ,game);
 
 // /*
 // Exercise 3
@@ -55,23 +55,22 @@ for (let i = 0; i < pokemon.length; i++) {
     console.log("Exercise 4:" , game.party);
 
 
-
-
+    
 // Exercise 5
 // 1. Choose three more Pokémon from the `pokemon` array and add them to your party.
 // 2. Consider different attributes like 'type' or 'HP' for your selection. Which array method will you use to add them?
-game.party.push(pokemon[30]);
-game.party.push(pokemon[39]);
-game.party.push(pokemon[79]);
-// i know this is not right, but I couldn't get anything else to work 
+// game.party.push(pokemon[30]);
+// game.party.push(pokemon[39]);
+// game.party.push(pokemon[79]);
+let strongPokemon = pokemon.filter(p => p.hp > 60).slice(0,3);
+game.party.push(...strongPokemon);
+
 console.log("Exercise 5:" , game.party);
+
 
 //Exercise 6
 // 1. Set the `completed` property to true for gyms with a difficulty below 3.
 // 2. Think about how you'd loop through the `gyms` array to check and update the `completed` property. 
-
-
-
 
 for (let gym of game.gyms) {
   if (gym.difficulty <= 3) {
@@ -87,9 +86,6 @@ console.log(game.gyms);
 
 
 
-
-
-
 // Exercise 7
 // 1. Evolve the starter Pokémon you added to your party earlier. Each starter Pokémon evolves into a specific one.
 // Hint: 
@@ -98,16 +94,19 @@ console.log(game.gyms);
 //   - Pokemon 7: Squirtle evolves into Pokemon 8: Wartortle
 //   - Pokemon 25: Pikachu evolves into Pokemon 26: Raichu
 // Solve Exercise 7 here:
-const evolvePok = [
-    game.party[0]=pokemon[1],
-    game.party[1]=pokemon[4],
-    game.party[2]=pokemon[7],
-    game.party[3]=pokemon[25]    
-];
-console.log("Exercise 7: These Pokemon have evolved: " , evolvePok);
-
-
-
+const evolvePok = () => {
+    if (game.party[0].number === 1) {
+  game.party[0] = pokemon[1]; // Bulbasaur -> Ivysaur
+} else if (game.party[4].number === 5) {
+  game.party[4] = pokemon[5]; // Charmander -> charizard
+} else if (game.party[6].number === 7) {
+  game.party[6] = pokemon[7]; // Squirtle -> Warton
+} else if (game.party[24].number === 25) {
+  game.party[24] = pokemon[25]; // Pikachu -> Raicku
+} 
+};
+evolvePok();
+console.log("Exercise 7: These Pokemon have evolved: " , game.party);
 
 
 // Exercise 8
@@ -138,13 +137,11 @@ for (let i = 0; i < pokemon.length; i++) {
 //   - not return anything
 // After writing this method, call it and pass in a Pokemon object of your choice from the `pokemon` data to catch it.
 // Solve Exercise 10 here:
-game.catchPokemon = function() {
-  pokemonObj = null;
-  game.party.pokemonObj;
-  console.log("Exercise 10: " , pokemonObj)
+game.catchPokemon = function(pokemonObj) {
+  game.party.push(pokemonObj);
 };
-game.catchPokemon();
-console.log("Exercise 10: " , pokemonObj)
+game.catchPokemon(pokemon[25]);
+console.log("Exercise 10: These Pokémon are in your party:", game.party);
 //I tried the following thinking it would help catch the game.catchPokemon(game.party[2]);
 
 
@@ -159,15 +156,14 @@ console.log("Exercise 10: " , pokemonObj)
 // Also, log the `game.items` array to confirm that the pokeball quantity is being decremented.
 
 // Solve Exercise 11 here:
-game.catchPokemon = function() {
-    game.items.quantity--;
-
-    pokemonObj = null;
-    game.party.pokemonObj;
-    console.log("Exercise 11: " , game.items.quantity)
+game.catchPokemon = function(pokemonObj) {
+  this.party.push(pokemonObj);
+  let pokeball = this.items.find(item => item.name === "pokeball");
+  pokeball.quantity--;
 };
-game.catchPokemon();
 
+game.catchPokemon(pokemon[25]);
+console.log("Exercise 11: " , game.items)
 
 
 // Exercise 12
@@ -225,7 +221,7 @@ game.partyCount = function (){
   return game.party.length;
 };
 game.partyCount();
-console.log('Exercise 14: There are ' , game.partyCount , ' Pokemon in your party');
+console.log('Exercise 14: There are ' , game.partyCount() , ' Pokemon in your party');
 // this doesn't work, but I feel like it should. What am I missing (apart from sleep)?
 
 
